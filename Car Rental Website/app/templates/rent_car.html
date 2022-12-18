@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Rent Car</title>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="/search_cars.html">CarShare</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><!-- <i class="fas fa-bars"></i> Font Awesome fontawesome.com --></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch">
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path></svg><!-- <i class="fas fa-search"></i> Font Awesome fontawesome.com --></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><svg class="svg-inline--fa fa-user fa-w-14 fa-fw" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg><!-- <i class="fas fa-user fa-fw"></i> Font Awesome fontawesome.com --></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <!-- <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/login?logout=True">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    <div id="nav"></div>
+
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="/search_cars">
+                            <div class="sb-nav-link-icon"><svg class="svg-inline--fa fa-tachometer-alt fa-w-18" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tachometer-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M288 32C128.94 32 0 160.94 0 320c0 52.8 14.25 102.26 39.06 144.8 5.61 9.62 16.3 15.2 27.44 15.2h443c11.14 0 21.83-5.58 27.44-15.2C561.75 422.26 576 372.8 576 320c0-159.06-128.94-288-288-288zm0 64c14.71 0 26.58 10.13 30.32 23.65-1.11 2.26-2.64 4.23-3.45 6.67l-9.22 27.67c-5.13 3.49-10.97 6.01-17.64 6.01-17.67 0-32-14.33-32-32S270.33 96 288 96zM96 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm48-160c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm246.77-72.41l-61.33 184C343.13 347.33 352 364.54 352 384c0 11.72-3.38 22.55-8.88 32H232.88c-5.5-9.45-8.88-20.28-8.88-32 0-33.94 26.5-61.43 59.9-63.59l61.34-184.01c4.17-12.56 17.73-19.45 30.36-15.17 12.57 4.19 19.35 17.79 15.17 30.36zm14.66 57.2l15.52-46.55c3.47-1.29 7.13-2.23 11.05-2.23 17.67 0 32 14.33 32 32s-14.33 32-32 32c-11.38-.01-20.89-6.28-26.57-15.22zM480 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg><!-- <i class="fas fa-tachometer-alt"></i> Font Awesome fontawesome.com --></div>
+                            Home
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interface</div>
+                        <a class="nav-link" href="/search_cars">Search Cars</a>
+                        <a class="nav-link" href="/create_car">Create a Car</a>
+                        <a class="nav-link" href="/update_car">Update a Car</a>
+                        <a class="nav-link" href="/delete_car">Delete a Car</a>
+                        <a class="nav-link" href="/top_charts">Top Charts</a>
+                        <a class="nav-link" href="/historical_trips">Your Trips</a>
+                        <a class="nav-link" href="/car_trip_history">Historical Trips</a>
+                        <a class="nav-link" href="/rent_car">Rent a Car</a>
+                    </div>
+                </div>
+                <!-- <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                </div> -->
+            </nav>
+        </div>
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Instructions: If you want rent a car, enter in the appropriate car information of the car you want to rent.
+                    </div>
+                    <div class="card-body">
+                        <table id="My Trips">
+                            <tbody>
+                                <form action="/rent_car" method="post">
+                                    <div>
+                                    </div>
+                                    <div>
+                                        <label>Car ID&ensp;</label>
+                                        <input type="text" name="carID" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Car Availability ID&ensp;</label>
+                                        <input type="text" name="carAvailabilityID" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label for="pickup-time">PickUp Time:&ensp;</label>
+                                        <input type="datetime-local" id="pickup-time" name="pickup-time" value="2022-11-05T07:30">
+                                        &ensp;
+                                        <label for="dropoff-time">DropOff Time:&ensp;</label>
+                                        <input type="datetime-local" id="dropoff-time" name="dropoff-time" value="2022-11-10T11:30">
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Enter in your card information below.</label>
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Your Lesser ID:&ensp;</label>
+                                        <input type="text" name="lesserID" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>First Name&ensp;</label>
+                                        <input type="text" name="firstName" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Last Name&ensp;</label>
+                                        <input type="text" name="lastName" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Card Number&ensp;</label>
+                                        <input type="text" name="cardNum" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Expiration Date (MM/YY)&ensp;</label>
+                                        <input type="text" name="expDate" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>CVC (3 digits on the back of your card)&ensp;</label>
+                                        <input type="text" name="cvc" />
+                                    </div>
+                                    <h6></h6>
+                                    <div>
+                                        <label>Billing Address&ensp;</label>
+                                        <input type="text" name="address" />
+                                    </div>
+                                </br>
+                                    <div>
+                                        <input type="submit" name="submit" value="Process rental car" />
+                                    </div>
+                                    
+                                </form>
+                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='assets/demo/chart-area-demo.js') }}"></script>
+        <script src="{{ url_for('static', filename='assets/demo/chart-bar-demo.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/datatables-simple-demo.js') }}"></script>
+</body>
+</html>

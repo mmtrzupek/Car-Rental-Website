@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Top Charts</title>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+    
+    <div id="nav"></div>
+
+    <div id="layoutSidenav">
+        <div id="nav-sidebar"></div>
+
+        <div id="layoutSidenav_content">
+            <main>
+
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Car location details with >= 4.0 rating and >= 50 trips
+                            </div>
+                            <div class="card-body">
+                                <table id="TopBooks">
+                                    <thead>
+                                        <tr>
+                                            <th>Car ID</th>
+                                            <th>CarLat</th>
+							  <th>CarLon</th>
+							  <th>Average Rating</th>
+							  <th>Total Trips</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for top_rated_car in top_rated_cars %}
+                                        <tr>
+                                            <td>{{ top_rated_car.car_id }}</td>
+                                            <td>{{ top_rated_car.car_lat }}</td>
+						        <td>{{ top_rated_car.car_lon }}</td>
+							  <td>{{ top_rated_car.avg_rating }}</td>
+							  <td>{{ top_rated_car.total_trips }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                New Cars With No Trip History
+                            </div>
+                            <div class="card-body">
+                                <table id="TopUsers">
+                                    <thead>
+                                        <tr>
+                                            <th>Car ID</th>
+                                            <th>Make</th>
+                                            <th>Model</th>
+                                            <th>Year</th>
+                                            <th>Available From</th>
+                                            <th>Available Till</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for new_user in new_users %}
+                                        <tr>
+                                            <td>{{ new_user.car_id }}</td>
+                                            <td>{{ new_user.make }}</td>
+                                            <td>{{ new_user.model }}</td>
+                                            <td>{{ new_user.year }}</td>
+                                            <td>{{ new_user.availability_from }}</td>
+                                            <td>{{ new_user.availability_till }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </main>
+        </div>
+    </div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/datatables-simple-demo.js') }}"></script>
+</body>
+</html>

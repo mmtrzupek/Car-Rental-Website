@@ -1,0 +1,23 @@
+runtime: python38
+instance_class: F1
+env_variables:
+  MYSQL_USER: "root"
+  MYSQL_PASSWORD: "dbms"
+  MYSQL_DB: "carsharedb"
+  MYSQL_HOST: "104.155.143.107" 
+
+handlers:
+# - url: /img
+#   static_dir: static/img
+
+# - url: /script
+#   static_dir: static/script
+
+# - url: /styles
+#   static_dir: static/styles
+
+- url: /css
+  static_dir: static/css
+
+- url: /js
+  static_dir: static/js
